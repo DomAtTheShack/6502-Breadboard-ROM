@@ -1,22 +1,133 @@
-; These three routines are provided by run6502 for simple I/O
-;   sim_putchar will print the character in the accumulator to standard output
-;   sim_getchar will populate the accumulator with one character from standard input
-;   sim_exit will terminate the simulator
-.import sim_putchar, sim_getchar, sim_exit
+PORTB = $6000
+PORTA = $6001
+DDRB = $6002
+DDRA = $6003
 
-.segment "CODE"
-.org $8000
-reset:  ldx#$20    ; Letter ' '
-next:   txa
-        jsr sim_putchar
-        inx
-        cpx #$7f
-        bne next
-        lda #$0a    ; Newline
-        jsr sim_putchar
-        jmp sim_exit
-.org $fffc
-.word $8000
-.word $0000
+E  = %10000000
+RW = %01000000
+RS = %00100000
+
+  .org $8000
+
+reset:
+  lda #%11111111 ; Set all pins on port B to output
+  sta DDRB
+
+  lda #%11100000 ; Set top 3 pins on port A to output
+  sta DDRA
+
+  lda #%00111000 ; Set 8-bit mode; 2-line display; 5x8 font
+  sta PORTB
+  lda #0         ; Clear RS/RW/E bits
+  sta PORTA
+  lda #E         ; Set E bit to send instruction
+  sta PORTA
+  lda #0         ; Clear RS/RW/E bits
+  sta PORTA
+
+  lda #%00001110 ; Display on; cursor on; blink off
+  sta PORTB
+  lda #0         ; Clear RS/RW/E bits
+  sta PORTA
+  lda #E         ; Set E bit to send instruction
+  sta PORTA
+  lda #0         ; Clear RS/RW/E bits
+  sta PORTA
+
+  lda #%00000110 ; Increment and shift cursor; don't shift display
+  sta PORTB
+  lda #0         ; Clear RS/RW/E bits
+  sta PORTA
+  lda #E         ; Set E bit to send instruction
+  sta PORTA
+  lda #0         ; Clear RS/RW/E bits
+  sta PORTA
+
+  lda #"N"
+  sta PORTB
+  lda #RS         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RS | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RS         ; Clear E bits
+  sta PORTA
+
+  lda #"i"
+  sta PORTB
+  lda #RS         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RS | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RS         ; Clear E bits
+  sta PORTA
+
+  lda #"g"
+  sta PORTB
+  lda #RS         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RS | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RS         ; Clear E bits
+  sta PORTA
+
+  lda #"g"
+  sta PORTB
+  lda #RS         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RS | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RS         ; Clear E bits
+  sta PORTA
+
+  lda #"a"
+  sta PORTB
+  lda #RS         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RS | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RS         ; Clear E bits
+  sta PORTA
+
+  lda #" "
+  sta PORTB
+  lda #RS         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RS | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RS         ; Clear E bits
+  sta PORTA
+
+  lda #"J"
+  sta PORTB
+  lda #RS         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RS | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RS         ; Clear E bits
+  sta PORTA
+
+  lda #"e"
+  sta PORTB
+  lda #RS         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RS | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RS         ; Clear E bits
+  sta PORTA
+
+  lda #"w"
+  sta PORTB
+  lda #RS         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RS | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RS         ; Clear E bits
+  sta PORTA
 
 
+loop:
+  jmp loop
+
+  .org $fffc
+  .word reset
+  .word $0000
