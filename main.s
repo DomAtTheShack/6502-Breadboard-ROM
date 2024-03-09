@@ -5,7 +5,8 @@ DDRA = $6003
 
 E  = %10000000
 RW = %01000000
-RS = %00100000
+RSW = %00100000
+T = $00
 
   .org $8000
 
@@ -18,112 +19,62 @@ reset:
 
   lda #%00111000 ; Set 8-bit mode; 2-line display; 5x8 font
   sta PORTB
-  lda #0         ; Clear RS/RW/E bits
-  sta PORTA
-  lda #E         ; Set E bit to send instruction
-  sta PORTA
-  lda #0         ; Clear RS/RW/E bits
-  sta PORTA
+  jsr flickEnable
 
   lda #%00001110 ; Display on; cursor on; blink off
   sta PORTB
-  lda #0         ; Clear RS/RW/E bits
-  sta PORTA
-  lda #E         ; Set E bit to send instruction
-  sta PORTA
-  lda #0         ; Clear RS/RW/E bits
-  sta PORTA
+  jsr flickEnable
+
 
   lda #%00000110 ; Increment and shift cursor; don't shift display
   sta PORTB
+  jsr flickEnable
+
+
+  lda #"H"
+  jsr writeChar
+
+  lda #"e"
+  jsr writeChar
+
+  lda #"l"
+  jsr writeChar
+
+  lda #"l"
+  jsr writeChar
+
+  lda #"o"
+  jsr writeChar
+
+  jmp loop
+
+writeChar:  ; 1 Param (Valid ASCII Char in Acumulator Register)
+  sta PORTB
+  lda #RSW         ; Set RS; Clear RW/E bits
+  sta PORTA
+  lda #(RSW | E)   ; Set E bit to send instruction
+  sta PORTA
+  lda #RSW         ; Clear E bits
+  sta PORTA
+  rts
+
+flickEnable: ; No Prameters nessisary
   lda #0         ; Clear RS/RW/E bits
   sta PORTA
   lda #E         ; Set E bit to send instruction
   sta PORTA
   lda #0         ; Clear RS/RW/E bits
   sta PORTA
+  rts
 
-  lda #"N"
-  sta PORTB
-  lda #RS         ; Set RS; Clear RW/E bits
+flickRW:   ; No Parametes nessisary
+  lda RSW         ; Set RS; Clear RW/E bits
   sta PORTA
-  lda #(RS | E)   ; Set E bit to send instruction
+  lda #(RSW | E)   ; Set E bit and Register Select bit to send instruction
   sta PORTA
-  lda #RS         ; Clear E bits
+  lda #0         ; Clear all bits
   sta PORTA
-
-  lda #"i"
-  sta PORTB
-  lda #RS         ; Set RS; Clear RW/E bits
-  sta PORTA
-  lda #(RS | E)   ; Set E bit to send instruction
-  sta PORTA
-  lda #RS         ; Clear E bits
-  sta PORTA
-
-  lda #"g"
-  sta PORTB
-  lda #RS         ; Set RS; Clear RW/E bits
-  sta PORTA
-  lda #(RS | E)   ; Set E bit to send instruction
-  sta PORTA
-  lda #RS         ; Clear E bits
-  sta PORTA
-
-  lda #"g"
-  sta PORTB
-  lda #RS         ; Set RS; Clear RW/E bits
-  sta PORTA
-  lda #(RS | E)   ; Set E bit to send instruction
-  sta PORTA
-  lda #RS         ; Clear E bits
-  sta PORTA
-
-  lda #"a"
-  sta PORTB
-  lda #RS         ; Set RS; Clear RW/E bits
-  sta PORTA
-  lda #(RS | E)   ; Set E bit to send instruction
-  sta PORTA
-  lda #RS         ; Clear E bits
-  sta PORTA
-
-  lda #" "
-  sta PORTB
-  lda #RS         ; Set RS; Clear RW/E bits
-  sta PORTA
-  lda #(RS | E)   ; Set E bit to send instruction
-  sta PORTA
-  lda #RS         ; Clear E bits
-  sta PORTA
-
-  lda #"J"
-  sta PORTB
-  lda #RS         ; Set RS; Clear RW/E bits
-  sta PORTA
-  lda #(RS | E)   ; Set E bit to send instruction
-  sta PORTA
-  lda #RS         ; Clear E bits
-  sta PORTA
-
-  lda #"e"
-  sta PORTB
-  lda #RS         ; Set RS; Clear RW/E bits
-  sta PORTA
-  lda #(RS | E)   ; Set E bit to send instruction
-  sta PORTA
-  lda #RS         ; Clear E bits
-  sta PORTA
-
-  lda #"w"
-  sta PORTB
-  lda #RS         ; Set RS; Clear RW/E bits
-  sta PORTA
-  lda #(RS | E)   ; Set E bit to send instruction
-  sta PORTA
-  lda #RS         ; Clear E bits
-  sta PORTA
-
+  rts
 
 loop:
   jmp loop
