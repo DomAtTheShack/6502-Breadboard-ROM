@@ -21,6 +21,9 @@ rom.bin: main.o bios.cfg
 main.o: main.s
 	$(CA65) main.s
 
+WriteChip:
+	minipro -p at28c256 -w rom.bin
+
 clean:
 	rm -f main.o rom.bin a.out
 
