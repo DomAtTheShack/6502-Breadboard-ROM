@@ -195,6 +195,9 @@ nmib:
   rti
 
 irq:
+  pha
+  txa
+  pha
   inc counter
   bne exit_irq
   inc counter + 1
@@ -205,6 +208,9 @@ exit_irq:
   dex
   bne delay
   bit PORTA
+  pla
+  tax
+  pla
   rti
 
   .org $fffa
