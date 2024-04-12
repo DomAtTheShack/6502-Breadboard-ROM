@@ -2,6 +2,9 @@ PORTB = $6000
 PORTA = $6001
 DDRB = $6002
 DDRA = $6003
+INTFR = $600D
+INTER = $600E
+PCR = $600c
 
 value = $0200
 mod10 = $0202
@@ -40,6 +43,12 @@ reset:
 
   lda #%00000001
   jsr lcd_instruction
+
+  lda #%10000010
+  sta INTER
+
+  lda #00
+  sta PCR
 
   lda #0
   sta counter
@@ -190,6 +199,12 @@ irq:
   bne exit_irq
   inc counter + 1
 exit_irq:
+  ;delay
+  ldx #$FF
+  delay:
+  dex
+  bne delay
+  bit PORTA
   rti
 
   .org $fffa
