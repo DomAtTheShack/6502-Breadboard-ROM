@@ -213,6 +213,11 @@ exit_irq:
   pla
   rti
 
+  .org $9000
+hello:
+  .byte 'H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!', 0
+
+
   .org $fffa
   .word nmib
   .word reset

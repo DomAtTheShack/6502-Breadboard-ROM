@@ -1,0 +1,268 @@
+Sections:
+00: "org0001:8000" (8000-80D5)
+01: "org0002:f000" (F000-F02D)
+02: "org0003:fffa" (FFFA-0)
+
+
+Source: "emuMain.s"
+                        	     1: charCount = $00
+                        	     2: charQueue = $01
+                        	     3: 
+                        	     4: ptr = $fe
+                        	     5: 
+                        	     6:   .org $8000
+                        	     7: 
+                        	     8: reset:
+00:8000 58              	     9:   cli
+                        	    10: loop:
+00:8001 AE0140          	    11:   ldx $4001
+00:8004 E000            	    12:   cpx #$00
+00:8006 F011            	    13:   beq nops
+00:8008 E00D            	    14:   cpx #$0d
+00:800A F012            	    15:   beq readCmd
+00:800C C017            	    16:   cpy #23
+00:800E F009            	    17:   beq nops
+00:8010 8E0150          	    18:   stx $5001
+00:8013 A400            	    19:   ldy charCount
+00:8015 9601            	    20:   stx charQueue, y
+00:8017 E600            	    21:   inc charCount
+                        	    22: nops:
+00:8019 EA              	    23:   nop
+00:801A EA              	    24:   nop
+00:801B 4C0180          	    25:   jmp loop
+                        	    26: 
+                        	    27: readCmd:
+00:801E A200            	    28:   ldx #0
+00:8020 A400            	    29:   ldy charCount
+00:8022 9601            	    30:   stx charQueue, y
+00:8024 E600            	    31:   inc charCount
+00:8026 20A180          	    32:   jsr printNewLine
+00:8029 A200            	    33:   ldx #0
+                        	    34: next_cmd:
+                        	    35:   ; Load command pointer from cmd_table
+00:802B E006            	    36:   cpx #6
+00:802D F03A            	    37:   beq printError
+00:802F BD06F0          	    38:   LDA cmd_table, X   ; Load low byte of command pointer
+00:8032 85FE            	    39:   STA ptr            ; Store to temporary pointer location
+00:8034 E6FE            	    40:   inc ptr
+00:8036 E8              	    41:   INX
+00:8037 BD06F0          	    42:   LDA cmd_table, X   ; Load high byte of command pointer
+00:803A 85FF            	    43:   STA ptr + 1        ; Store high byte
+00:803C E8              	    44:   INX
+                        	    45: 
+00:803D A000            	    46:   LDY #0             ; Reset Y index to start comparing from the beginning
+                        	    47:   CMP_loop:
+00:803F B1FE            	    48:     LDA (ptr), Y     ; Load a byte from the command
+00:8041 F009            	    49:     beq match_found  ; If null terminator is reached, command matches
+00:8043 D90100          	    50:     CMP charQueue, Y ; Compare with user input character at Y index
+00:8046 D0E3            	    51:     BNE next_cmd     ; If not equal, go to next command
+00:8048 C8              	    52:     INY              ; Move to the next character
+00:8049 4C3F80          	    53:     JMP CMP_loop     ; Repeat comparison
+                        	    54: 
+                        	    55: match_found:
+00:804C C8              	    56:   iny
+00:804D A900            	    57:   lda #0
+00:804F D90100          	    58:   cmp charQueue, y
+00:8052 D0AD            	    59:   bne loop
+00:8054 CA              	    60:   dex
+00:8055 BD00F0          	    61:   lda cmd_method_table, x
+00:8058 85FF            	    62:   sta ptr + 1
+00:805A CA              	    63:   dex
+00:805B BD00F0          	    64:   lda cmd_method_table, x
+00:805E 85FE            	    65:   sta ptr
+00:8060 208480          	    66:   jsr clearUserIn
+                        	    67:   ; Code to handle a successful match (e.g., execute command)
+00:8063 6CFE00          	    68:   JMP (ptr) ; Jump to command handling code
+                        	    69: 
+                        	    70: handle_command:
+00:8066 20A180          	    71:   jsr printNewLine
+                        	    72: 
+                        	    73: 
+                        	    74: printError:
+00:8069 208480          	    75:   jsr clearUserIn
+00:806C AD1FF0          	    76:   lda error
+00:806F 8500            	    77:   sta charCount
+00:8071 AD0CF0          	    78:   lda table_end - 2
+00:8074 85FE            	    79:   sta ptr
+00:8076 AD0DF0          	    80:   lda table_end - 1
+00:8079 85FF            	    81:   sta ptr + 1
+00:807B 208B80          	    82:   jsr printString
+00:807E 20A180          	    83:   jsr printNewLine
+00:8081 4C0180          	    84:   jmp loop
+                        	    85: 
+                        	    86: clearUserIn:
+00:8084 48              	    87:   pha
+00:8085 A900            	    88:   lda #0
+00:8087 8500            	    89:   sta charCount
+00:8089 68              	    90:   pla
+00:808A 60              	    91:   rts
+                        	    92: 
+                        	    93: printString:
+00:808B A000            	    94:   ldy #0
+                        	    95: printStringLoop:
+00:808D B1FE            	    96:   lda (ptr), y
+00:808F 8D0150          	    97:   sta $5001
+00:8092 C8              	    98:   iny
+00:8093 C400            	    99:   cpy charCount
+00:8095 D0F6            	   100:   bne printStringLoop
+00:8097 20A180          	   101:   jsr printNewLine
+00:809A A900            	   102:   lda #0
+00:809C 8500            	   103:   sta charCount
+00:809E 4C0180          	   104:   jmp loop
+                        	   105: 
+                        	   106: printNewLine:
+00:80A1 48              	   107:   pha
+00:80A2 A90D            	   108:   lda #$0d
+00:80A4 8D0150          	   109:   sta $5001
+00:80A7 68              	   110:   pla
+00:80A8 60              	   111:   rts
+                        	   112: 
+                        	   113: loadCmdToPtr:
+00:80A9 A000            	   114:   ldy #0
+00:80AB BD06F0          	   115:   lda cmd_table, x
+00:80AE 85FE            	   116:   sta ptr
+00:80B0 E8              	   117:   inx
+00:80B1 BD06F0          	   118:   lda cmd_table, x
+00:80B4 85FF            	   119:   sta ptr + 1
+                        	   120: 
+                        	   121:  ; Load the length of the command into charCount
+00:80B6 B1FE            	   122:   lda (ptr), y      ; Load the first byte at the address in ptr (length byte)
+00:80B8 E6FE            	   123:   inc ptr
+00:80BA 8500            	   124:   sta charCount      ; Store the length in charCount
+00:80BC 60              	   125:   rts
+                        	   126: 
+                        	   127: help:
+00:80BD A200            	   128:   ldx #$00
+00:80BF 20A980          	   129:   jsr loadCmdToPtr
+00:80C2 4C8B80          	   130:   jmp printString
+                        	   131: 
+                        	   132: run:
+00:80C5 A204            	   133:   ldx #$04
+00:80C7 20A980          	   134:   jsr loadCmdToPtr
+00:80CA 4C8B80          	   135:   jmp printString
+                        	   136: 
+                        	   137: stop:
+00:80CD A202            	   138:   ldx #$02
+00:80CF 20A980          	   139:   jsr loadCmdToPtr
+00:80D2 4C8B80          	   140:   jmp printString
+                        	   141: 
+                        	   142:   .org $f000
+                        	   143: 
+                        	   144: cmd_method_table:
+01:F000 BD80            	   145:   .word help
+01:F002 CD80            	   146:   .word stop
+01:F004 C580            	   147:   .word run
+                        	   148: 
+                        	   149: cmd_method_end:
+                        	   150: 
+                        	   151: cmd_table:
+01:F006 0EF0            	   152:   .word cmd1  ; Pointer to command 1
+01:F008 14F0            	   153:   .word cmd2  ; Pointer to command 2
+01:F00A 1AF0            	   154:   .word cmd3  ; Pointer to command 3
+01:F00C 20F0            	   155:   .word error + 1
+                        	   156: 
+                        	   157: 
+                        	   158: table_end:     ; Marks the end of the table
+                        	   159: 
+                        	   160: cmd1:
+01:F00E 04              	   161:   .byte 4,'H', 'E', 'L', 'P', 0  ; Command "HELP", null-terminated
+01:F00F 48
+01:F010 45
+01:F011 4C
+01:F012 50
+01:F013 00
+                        	   162: cmd2:
+01:F014 04              	   163:   .byte 4,'S', 'T', 'O', 'P', 0  ; Command "STOP", null-terminated
+01:F015 53
+01:F016 54
+01:F017 4F
+01:F018 50
+01:F019 00
+                        	   164: cmd3:
+01:F01A 03              	   165:   .byte 3,'R', 'U', 'N', 0       ; Command "RUN", null-terminated
+01:F01B 52
+01:F01C 55
+01:F01D 4E
+01:F01E 00
+                        	   166: error:
+01:F01F 0E              	   167:   .byte 14,'S','y','n','t','a','x',' ','E','r','r','o','r', $0d  ; Syntax Error
+01:F020 53
+01:F021 79
+01:F022 6E
+01:F023 74
+01:F024 61
+01:F025 78
+01:F026 20
+01:F027 45
+01:F028 72
+01:F029 72
+01:F02A 6F
+01:F02B 72
+01:F02C 0D
+                        	   168: 
+                        	   169:   .org $fffa
+02:FFFA 0000            	   170:   .word $0000
+02:FFFC 0080            	   171:   .word reset
+02:FFFE 0000            	   172:   .word $0000
+                        	   173: 
+
+
+Symbols by name:
+CMP_loop                         A:803F
+charCount                        E:0000
+charQueue                        E:0001
+clearUserIn                      A:8084
+cmd1                             A:F00E
+cmd2                             A:F014
+cmd3                             A:F01A
+cmd_method_end                   A:F006
+cmd_method_table                 A:F000
+cmd_table                        A:F006
+error                            A:F01F
+handle_command                   A:8066
+help                             A:80BD
+loadCmdToPtr                     A:80A9
+loop                             A:8001
+match_found                      A:804C
+next_cmd                         A:802B
+nops                             A:8019
+printError                       A:8069
+printNewLine                     A:80A1
+printString                      A:808B
+printStringLoop                  A:808D
+ptr                              E:00FE
+readCmd                          A:801E
+reset                            A:8000
+run                              A:80C5
+stop                             A:80CD
+table_end                        A:F00E
+
+Symbols by value:
+0000 charCount
+0001 charQueue
+00FE ptr
+8000 reset
+8001 loop
+8019 nops
+801E readCmd
+802B next_cmd
+803F CMP_loop
+804C match_found
+8066 handle_command
+8069 printError
+8084 clearUserIn
+808B printString
+808D printStringLoop
+80A1 printNewLine
+80A9 loadCmdToPtr
+80BD help
+80C5 run
+80CD stop
+F000 cmd_method_table
+F006 cmd_method_end
+F006 cmd_table
+F00E cmd1
+F00E table_end
+F014 cmd2
+F01A cmd3
+F01F error

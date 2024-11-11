@@ -6,8 +6,12 @@ RUN6502=run6502
 
 
 buildR: main.s
-	6502c -dotdir -Fbin main.s
+	./6502c -dotdir -Fbin -L rom.bin.lst emuMain.s
 	mv a.out rom.bin
+
+buildWoz: main.s
+	./6502c -dotdir -Fbin -L woz.bin.lst wozmon.s
+	mv a.out woz.bin
 
 rom.bin: main.o bios.cfg
 	$(LD65) --define sim_putchar=0xFFEE \
