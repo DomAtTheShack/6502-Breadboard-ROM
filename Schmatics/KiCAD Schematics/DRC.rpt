@@ -1,0 +1,249 @@
+** Drc report for 6502 Computer.kicad_pcb **
+** Created on 2025-04-29T14:18:54-0400 **
+
+** Found 67 DRC violations **
+[shorting_items]: Items shorting two nets (nets GND and Net-(U8-CLK))
+    Local override; error
+    @(108.5850 mm, 112.3950 mm): Track [GND] on B.Cu, length 1.6520 mm
+    @(108.5850 mm, 112.3950 mm): PTH pad 10 [Net-(U8-CLK)] of UB1
+[shorting_items]: Items shorting two nets (nets Net-(J2-Pin_33) and Net-(J2-Pin_14))
+    Local override; error
+    @(163.6470 mm, 29.8273 mm): Track [Net-(J2-Pin_33)] on F.Cu, length 0.0212 mm
+    @(163.5670 mm, 29.8423 mm): Track [Net-(J2-Pin_14)] on F.Cu, length 0.3720 mm
+[shorting_items]: Items shorting two nets (nets Net-(J2-Pin_14) and Net-(J2-Pin_33))
+    Local override; error
+    @(163.8320 mm, 29.5777 mm): Track [Net-(J2-Pin_14)] on F.Cu, length 0.3745 mm
+    @(163.6470 mm, 29.8273 mm): Track [Net-(J2-Pin_33)] on F.Cu, length 0.0212 mm
+[shorting_items]: Items shorting two nets (nets Net-(J2-Pin_33) and Net-(J2-Pin_14))
+    Local override; error
+    @(163.6620 mm, 29.8423 mm): Track [Net-(J2-Pin_33)] on F.Cu, length 0.9333 mm
+    @(163.5670 mm, 29.8423 mm): Track [Net-(J2-Pin_14)] on F.Cu, length 0.3720 mm
+[clearance]: Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.0607 mm)
+    Rule: netclass 'Default'; error
+    @(163.8320 mm, 29.2342 mm): Track [Net-(J2-Pin_14)] on F.Cu, length 0.3435 mm
+    @(163.6470 mm, 29.8273 mm): Track [Net-(J2-Pin_33)] on F.Cu, length 0.0212 mm
+[shorting_items]: Items shorting two nets (nets Net-(J2-Pin_33) and Net-(J2-Pin_14))
+    Local override; error
+    @(163.6470 mm, 29.7606 mm): Track [Net-(J2-Pin_33)] on F.Cu, length 0.0667 mm
+    @(163.5670 mm, 29.8423 mm): Track [Net-(J2-Pin_14)] on F.Cu, length 0.3720 mm
+[shorting_items]: Items shorting two nets (nets Net-(J2-Pin_33) and Net-(J2-Pin_14))
+    Local override; error
+    @(163.6980 mm, 29.7090 mm): Track [Net-(J2-Pin_33)] on F.Cu, length 0.0726 mm
+    @(163.5670 mm, 29.8423 mm): Track [Net-(J2-Pin_14)] on F.Cu, length 0.3720 mm
+[shorting_items]: Items shorting two nets (nets Net-(J2-Pin_33) and Net-(J2-Pin_14))
+    Local override; error
+    @(164.5510 mm, 30.5616 mm): Track [Net-(J2-Pin_33)] on F.Cu, length 1.2060 mm
+    @(163.5670 mm, 29.8423 mm): Track [Net-(J2-Pin_14)] on F.Cu, length 0.3720 mm
+[clearance]: Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.0760 mm)
+    Rule: netclass 'Default'; error
+    @(39.5030 mm, 104.3930 mm): PTH pad 6 [unconnected-(P1-Pad6)] of P1
+    @(38.3770 mm, 109.5190 mm): Track [GND] on B.Cu, length 14.8960 mm
+[clearance]: Clearance violation (netclass 'Default' clearance 0.2000 mm; actual 0.1036 mm)
+    Rule: netclass 'Default'; error
+    @(36.7030 mm, 109.0930 mm): PTH pad 1 [Net-(UA1-PC2)] of P1
+    @(36.7030 mm, 111.1930 mm): Track [GND] on B.Cu, length 2.3674 mm
+[shorting_items]: Items shorting two nets (nets GND and Net-(U8-CLK))
+    Local override; error
+    @(72.3900 mm, 112.3950 mm): Track [GND] on F.Cu, length 2.5400 mm
+    @(69.8500 mm, 112.3950 mm): PTH pad 7 [Net-(U8-CLK)] of U8
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(20.2530 mm, 32.8940 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(20.2530 mm, 35.4340 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(20.2530 mm, 37.9740 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(20.2530 mm, 40.5140 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(20.2530 mm, 43.0540 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(20.2530 mm, 45.5940 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 33.6540 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 36.1940 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 38.7340 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 41.2740 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 43.8140 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 45.6940 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 45.8140 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 45.9340 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 46.0540 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 46.1740 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 46.2940 mm): Segment of J6 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(25.4000 mm, 130.1750 mm): Segment on Edge.Cuts
+    @(26.2530 mm, 46.3540 mm): Segment of J6 on F.Silkscreen
+[lib_footprint_mismatch]: Footprint 'DIP-16_W7.62mm_Socket_LongPads' does not match copy in library 'Package_DIP'.
+    Local override; warning
+    @(54.6100 mm, 112.3950 mm): Footprint U8
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(48.8950 mm, 111.1250 mm): Footprint C2
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(80.0100 mm, 111.1250 mm): Footprint C10
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(55.0710 mm, 76.5810 mm): Footprint C12
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(107.3150 mm, 92.7100 mm): Footprint C14
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(126.3650 mm, 111.0450 mm): Footprint C11
+[lib_footprint_mismatch]: Footprint 'DIP-28_W7.62mm_Socket_LongPads' does not match copy in library 'Package_DIP'.
+    Local override; warning
+    @(85.7250 mm, 112.3950 mm): Footprint UB1
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(109.2200 mm, 41.5290 mm): Footprint C1
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(154.9400 mm, 41.5290 mm): Footprint C3
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(48.2600 mm, 65.9600 mm): Footprint C4
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(48.2600 mm, 41.4490 mm): Footprint C5
+[lib_footprint_mismatch]: Footprint 'DIP-40_W15.24mm_Socket_LongPads' does not match copy in library 'Package_DIP'.
+    Local override; warning
+    @(53.9750 mm, 46.6090 mm): Footprint U1
+[lib_footprint_mismatch]: Footprint 'DIP-28_W15.24mm_Socket_LongPads' does not match copy in library 'Package_DIP'.
+    Local override; warning
+    @(114.9350 mm, 46.6090 mm): Footprint U2
+[lib_footprint_mismatch]: Footprint 'DIP-28_W15.24mm_Socket_LongPads' does not match copy in library 'Package_DIP'.
+    Local override; warning
+    @(160.6550 mm, 46.6090 mm): Footprint U6
+[lib_footprint_mismatch]: Footprint 'Potentiometer_Bourns_3386C_Horizontal' does not match copy in library 'Potentiometer_THT'.
+    Local override; warning
+    @(122.0800 mm, 98.0000 mm): Footprint RV1
+[lib_footprint_mismatch]: Footprint 'CP_Radial_D5.0mm_P2.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(192.2780 mm, 119.6340 mm): Footprint C15
+[lib_footprint_mismatch]: Footprint 'DIP-40_W15.24mm_Socket_LongPads' does not match copy in library 'Package_DIP'.
+    Local override; warning
+    @(53.9750 mm, 71.1200 mm): Footprint U5
+[lib_footprint_issues]: The current configuration does not include the footprint library 'ps2'.
+    Local override; warning
+    @(36.7030 mm, 109.0930 mm): Footprint P1
+[lib_footprint_mismatch]: Footprint 'PinHeader_1x11_P2.54mm_Vertical' does not match copy in library 'Connector_PinHeader_2.54mm'.
+    Local override; warning
+    @(129.4130 mm, 20.1930 mm): Footprint J9
+[lib_footprint_mismatch]: Footprint 'DIP-14_W7.62mm_Socket_LongPads' does not match copy in library 'Package_DIP'.
+    Local override; warning
+    @(53.8480 mm, 83.3120 mm): Footprint U4
+[lib_footprint_mismatch]: Footprint 'PinHeader_1x04_P2.54mm_Vertical' does not match copy in library 'Connector_PinHeader_2.54mm'.
+    Local override; warning
+    @(159.7660 mm, 20.1930 mm): Footprint J3
+[lib_footprint_mismatch]: Footprint 'DIP-28_W15.24mm_Socket_LongPads' does not match copy in library 'Package_DIP'.
+    Local override; warning
+    @(100.7110 mm, 83.1850 mm): Footprint U7
+[lib_footprint_mismatch]: Footprint 'DIP-28_W7.62mm_Socket_LongPads' does not match copy in library 'Package_DIP'.
+    Local override; warning
+    @(132.0800 mm, 112.3950 mm): Footprint UA1
+[lib_footprint_mismatch]: Footprint 'PinHeader_2x03_P2.54mm_Vertical' does not match copy in library 'Connector_PinHeader_2.54mm'.
+    Local override; warning
+    @(172.5930 mm, 22.7330 mm): Footprint J7
+[lib_footprint_mismatch]: Footprint 'PinHeader_2x01_P2.54mm_Vertical' does not match copy in library 'Connector_PinHeader_2.54mm'.
+    Local override; warning
+    @(182.3720 mm, 20.1930 mm): Footprint J10
+[lib_footprint_mismatch]: Footprint 'PinHeader_2x20_P2.54mm_Vertical' does not match copy in library 'Connector_PinHeader_2.54mm'.
+    Local override; warning
+    @(203.8350 mm, 31.5595 mm): Footprint J2
+[lib_footprint_mismatch]: Footprint 'PinHeader_2x03_P2.54mm_Vertical' does not match copy in library 'Connector_PinHeader_2.54mm'.
+    Local override; warning
+    @(62.9920 mm, 122.4920 mm): Footprint J4
+[lib_footprint_mismatch]: Footprint 'PinHeader_2x08_P2.54mm_Vertical' does not match copy in library 'Connector_PinHeader_2.54mm'.
+    Local override; warning
+    @(203.6440 mm, 85.9790 mm): Footprint J5
+[lib_footprint_mismatch]: Footprint 'PinHeader_1x06_P2.54mm_Horizontal' does not match copy in library 'Connector_PinHeader_2.54mm'.
+    Local override; warning
+    @(30.3530 mm, 45.9740 mm): Footprint J6
+[lib_footprint_mismatch]: Footprint 'Crystal_HC49-4H_Vertical' does not match copy in library 'Crystal'.
+    Local override; warning
+    @(102.0500 mm, 122.0000 mm): Footprint Y2
+[lib_footprint_mismatch]: Footprint 'C_Disc_D4.3mm_W1.9mm_P5.00mm' does not match copy in library 'Capacitor_THT'.
+    Local override; warning
+    @(95.0000 mm, 124.5000 mm): Footprint C8
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(72.3900 mm, 112.3950 mm): Track [GND] on F.Cu, length 2.5400 mm
+    @(69.8500 mm, 112.3950 mm): PTH pad 7 [Net-(U8-CLK)] of U8
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(108.5850 mm, 112.3950 mm): Track [GND] on B.Cu, length 1.6520 mm
+    @(108.5850 mm, 112.3950 mm): PTH pad 10 [Net-(U8-CLK)] of UB1
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(182.3720 mm, 26.6700 mm): PCB text '~{IRQ
+(6551})' on F.Silkscreen
+    @(183.7020 mm, 21.4630 mm): Segment of J10 on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(182.3720 mm, 26.6700 mm): PCB text '~{IRQ
+(6551})' on F.Silkscreen
+    @(183.7020 mm, 24.0630 mm): Segment of J10 on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(82.2300 mm, 121.1900 mm): Reference field of R5
+    @(81.9200 mm, 123.1100 mm): Segment of R4 on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(85.0700 mm, 123.1100 mm): Segment of R5 on F.Silkscreen
+    @(85.3800 mm, 121.1900 mm): Reference field of R6
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(88.8800 mm, 121.3800 mm): Reference field of R2
+    @(88.2200 mm, 123.1100 mm): Segment of R6 on F.Silkscreen
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** End of Report **
