@@ -1140,7 +1140,7 @@
       "netlist": "6502 Computer.net",
       "plot": "",
       "pos_files": "",
-      "specctra_dsn": "../Downloads/6502 Computer.dsn",
+      "specctra_dsn": "../../../../../../Downloads/6502 Computer.dsn",
       "step": "6502 Computer.glb",
       "svg": "",
       "vrml": ""

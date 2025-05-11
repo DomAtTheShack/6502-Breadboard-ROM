@@ -1,4 +1,4 @@
-1746087692353
+149256753
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -44239,13 +44239,6 @@ Surface mounted socket strip SMD 2x40 2.54mm double row
 0
 80
 80
-Connector_RCA
-CUI_RCJ-017
-<b>DC POWER JACK</b><p>Source: DCJ0202.pdf
-
-0
-4
-4
 Connector_RJ
 RJ9_Evercom_5301-440xxx_Horizontal
 Evercom 5301-4P4C RJ9 receptacle, unshielded, https://datasheet.lcsc.com/lcsc/2207051802_EVERCOM-5301-4P4C_C3097715.pdf
