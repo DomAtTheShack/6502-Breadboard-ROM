@@ -216,6 +216,7 @@ PRHEX       AND #$0F        ;Mask LSD for hex print.
             CMP #$BA        ;Digit?
             BCC ECHO        ;Yes, output it.
             ADC #$06        ;Add offset for letter.
+
 ECHO        PHA             ;*Save A
             AND #$7F        ;*Change to "standard ASCII"
             STA ACIA_DAT    ;*Send it.

@@ -15,11 +15,14 @@ rx_wait:
   rts
 
 char_tx:
+  pha
+  lda #$0A
   sta ACIA_DATA
 tx_wait:
   lda ACIA_STATUS
   and #$10          ; Check tx buffer
   beq tx_wait
+  pla
   rts
 
 acia_init:

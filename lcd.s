@@ -52,6 +52,7 @@ lcd_instruction:
   rts
 
 print_char:
+  pha
   jsr lcd_wait
   sta PORTB
   lda #RS         ; Set RS; Clear RW/E bits
@@ -60,6 +61,7 @@ print_char:
   sta PORTA
   lda #RS         ; Clear E bits
   sta PORTA
+  pla
   rts
 
 lcd_init:

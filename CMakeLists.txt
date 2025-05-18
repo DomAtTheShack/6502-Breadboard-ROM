@@ -5,12 +5,15 @@ project(DOM02 ASM)
 set(BIN_OUTPUT_DIR ${CMAKE_SOURCE_DIR}/bin)
 set(MINIPRO ${CMAKE_SOURCE_DIR}/bin/6502/minipro)
 set(ASSEMBLER ${CMAKE_SOURCE_DIR}/bin/6502/6502c)
+set(CA65 /usr/bin/ca65)
+set(LD65 /usr/bin/ld65)
 
 # Output files
 set(ROM_BIN ${BIN_OUTPUT_DIR}/rom.bin)
 set(ROM_LST ${BIN_OUTPUT_DIR}/rom.bin.lst)
 set(WOZ_BIN ${BIN_OUTPUT_DIR}/woz.bin)
 set(WOZ_LST ${BIN_OUTPUT_DIR}/woz.bin.lst)
+set(WOZ_OBJ ${BIN_OUTPUT_DIR}/woz.o)
 
 # Ensure output directory exists
 file(MAKE_DIRECTORY ${BIN_OUTPUT_DIR})
@@ -29,8 +32,9 @@ add_custom_target(buildR ALL DEPENDS ${ROM_BIN})
 # WozMon build
 add_custom_command(
     OUTPUT ${WOZ_BIN}
-    COMMAND ${ASSEMBLER} -dotdir -Fbin -L ${WOZ_LST} ${CMAKE_SOURCE_DIR}/wozmon.s
-    COMMAND ${CMAKE_COMMAND} -E rename a.out ${WOZ_BIN}
+    COMMAND ${CA65} -o ${WOZ_OBJ} ${CMAKE_SOURCE_DIR}/wozmon.s
+    COMMAND ${LD65} -C ${CMAKE_SOURCE_DIR}/rom.cfg -o ${WOZ_BIN} ${BIN_OUTPUT_DIR}/woz.o
+    COMMAND ${MINIPRO} -p at28c256 -w ${WOZ_BIN}
     DEPENDS wozmon.s
     COMMENT "Assembling WozMon to ${WOZ_BIN}"
 )

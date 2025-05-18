@@ -1,0 +1,13 @@
+# sim65 map file for custom 6502 system
+
+# RAM: $0000–$3FFF (read/write/execute)
+0x0000  0x4000  rwx
+
+# UART: $4000–$5FFF (read/write)
+0x4000  0x2000  rw
+
+# I/O: $6000–$7FFF (read/write)
+0x6000  0x2000  rw
+
+# ROM: $8000–$FFFF (read/execute only)
+0x8000  0x8000  rx
