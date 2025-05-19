@@ -5,4 +5,8 @@ CLRMON:
     lda #$0C
     jsr MONCOUT
     rts
+
+CURPOS:
+
+
 .endif

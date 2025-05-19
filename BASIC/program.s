@@ -79,6 +79,9 @@ LE28E:
         bpl     RESTART
 .else
         lsr     Z14
+        lda     #$00
+        bit     OK_FLAG
+        bne     NO_OK
  .ifndef AIM65
         lda     #<QT_OK
         ldy     #>QT_OK
@@ -87,6 +90,7 @@ LE28E:
   .else
         jsr     GOSTROUT
   .endif
+  NO_OK:
  .else
         jsr     GORESTART
  .endif

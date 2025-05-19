@@ -124,6 +124,8 @@ COLD_START:
         sta     Z18
   .endif
   .ifdef DARWIN
+        lda #$01
+        sta OK_FLAG
         jsr LCDINIT
   .endif
 .endif

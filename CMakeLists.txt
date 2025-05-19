@@ -3,7 +3,7 @@ project(DOM02 ASM)
 
 # Common config for Linux and WSL
 set(BIN_OUTPUT_DIR ${CMAKE_SOURCE_DIR}/bin)
-set(MINIPRO ${CMAKE_SOURCE_DIR}/bin/6502/minipro)
+set(MINIPRO minipro)
 set(ASSEMBLER ${CMAKE_SOURCE_DIR}/bin/6502/6502c)
 set(CA65 /usr/bin/ca65)
 set(LD65 /usr/bin/ld65)

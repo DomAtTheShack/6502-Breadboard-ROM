@@ -83,6 +83,7 @@
 		keyword_rts "LCDCMD", LCDCMD
 		keyword_rts "LCDPRINT", LCDPRINT
 		keyword_rts "CLRMON", CLRMON
+		keyword_rts "CURPOS", CURPOS
 .endif
 		count_tokens
 
