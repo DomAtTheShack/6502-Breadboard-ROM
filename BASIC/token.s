@@ -79,6 +79,11 @@
 .endif
 		keyword_rts "NEW", NEW
 
+.ifdef DARWIN
+		keyword_rts "LCDCMD", LCDCMD
+		keyword_rts "LCDPRINT", LCDPRINT
+		keyword_rts "CLRMON", CLRMON
+.endif
 		count_tokens
 
 		keyword	"TAB(", TOKEN_TAB

@@ -33,3 +33,6 @@
 .include "trig.s"
 .include "init.s"
 .include "extra.s"
+.include "lcd.s"
+.include "video.s"
+
