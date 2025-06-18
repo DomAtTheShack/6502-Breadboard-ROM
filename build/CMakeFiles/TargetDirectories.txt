@@ -1,0 +1,8 @@
+/media/dominichann/Main Disk/Programming/IDEProjects/Java/6502-Breadboard-ROM/build/CMakeFiles/buildR.dir
+/media/dominichann/Main Disk/Programming/IDEProjects/Java/6502-Breadboard-ROM/build/CMakeFiles/buildWoz.dir
+/media/dominichann/Main Disk/Programming/IDEProjects/Java/6502-Breadboard-ROM/build/CMakeFiles/WriteChip.dir
+/media/dominichann/Main Disk/Programming/IDEProjects/Java/6502-Breadboard-ROM/build/CMakeFiles/clean_generated.dir
+/media/dominichann/Main Disk/Programming/IDEProjects/Java/6502-Breadboard-ROM/build/CMakeFiles/flashR.dir
+/media/dominichann/Main Disk/Programming/IDEProjects/Java/6502-Breadboard-ROM/build/CMakeFiles/buildWozClean.dir
+/media/dominichann/Main Disk/Programming/IDEProjects/Java/6502-Breadboard-ROM/build/CMakeFiles/edit_cache.dir
+/media/dominichann/Main Disk/Programming/IDEProjects/Java/6502-Breadboard-ROM/build/CMakeFiles/rebuild_cache.dir
