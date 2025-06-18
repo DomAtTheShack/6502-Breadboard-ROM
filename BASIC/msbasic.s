@@ -1,7 +1,11 @@
 .feature force_range
 .debuginfo +
 
+.ifdef DARWIN
+.setcpu "65c02"
+.else
 .setcpu "6502"
+.endif
 .macpack longbranch
 
 .include "defines.s"
@@ -35,4 +39,5 @@
 .include "extra.s"
 .include "lcd.s"
 .include "video.s"
+.include "sound.s"
 

@@ -1,3 +1,4 @@
+
 		init_token_tables
 
 		keyword_rts "END", END
@@ -40,10 +41,6 @@
 .ifndef CONFIG_NO_POKE
 		keyword_rts "WAIT", WAIT
 .endif
-.ifndef KBD
-		keyword_rts "LOAD", LOAD
-		keyword_rts "SAVE", SAVE
-.endif
 .ifdef CONFIG_CBM_ALL
 		keyword_rts "VERIFY", VERIFY
 .endif
@@ -84,7 +81,9 @@
 		keyword_rts "LCDPRINT", LCDPRINT
 		keyword_rts "CLRMON", CLRMON
 		keyword_rts "CURPOS", CURPOS
+		keyword_rts "CURSET", CURSET
 .endif
+
 		count_tokens
 
 		keyword	"TAB(", TOKEN_TAB

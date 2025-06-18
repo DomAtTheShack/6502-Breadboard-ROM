@@ -15,14 +15,12 @@ IN		= $0200			; Input buffer
 
 RESET:
                 CLD                     ; Clear decimal arithmetic mode.
+                SEI
                 JSR     INIT_BUFFER
                 LDA     #$1F            ; 8-N-1, 19200 bps
                 STA     ACIA_CTRL
                 LDY     #$89            ; No parity, no echo, rx interrupts.
                 STY     ACIA_CMD
-                LDA     #$0C
-                JSR     ECHO
-                LDA     #$1F
 
 NOTCR:
                 CMP     #$08            ; Backspace key?
